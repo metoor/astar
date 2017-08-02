@@ -1,0 +1,14 @@
+{
+  "name": "astar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "astar",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "a*"
+  ],
+  "author": "Metoor",
+  "license": "MIT"
+}

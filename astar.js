@@ -12,7 +12,7 @@ const BlockType = {
 //寻路地图，一个二维数组
 let _mapValue = null;
 
-let _openTable = [];
+let _openTable = require("./binaryHeap");
 //let _closeTable = [];
 
 let _mapNode = [];
@@ -63,29 +63,6 @@ function getNode(row, col) {
     }
 
     return _mapNode[row * _mapWidth + col];
-}
-
-/**
- * 对openTable中F值最小的节点移动到最前面
- */
-function moveMinValueTOFirst() {
-    let index = 0;
-    let curNode = _openTable[0];
-    let curFValue = curNode.hValue + curNode.gValue;
-    for (let i = 1; i < _openTable.length; i++) {
-        let nextNode = _openTable[i];
-        let desFValue = nextNode.hValue + nextNode.gValue;
-
-        if (curFValue > desFValue) {
-            curNode = nextNode;
-            curFValue = desFValue;
-            index = i;
-        }
-    }
-
-    if (index != 0) {
-        swapWithIndex(_openTable, 0, index);
-    }
 }
 
 /**
@@ -150,7 +127,8 @@ function insertToOpenTable(dealNode, curNode, endNode, weight) {
             dealNode.hValue = getHValue(dealNode, endNode);
             dealNode.parent = curNode;
             dealNode.isInopenTable = true;
-            _openTable.push(dealNode);
+            //_openTable.push(dealNode);
+            _openTable.add(dealNode);
         }
     }
 }
@@ -240,12 +218,12 @@ function search(startRow, startCol, endRow, endCol) {
     startNode.hValue = getHValue(startNode, endNode);
     startNode.parent = null;
     startNode.isInCloseTable = true;
-    _openTable.push(startNode);
+    _openTable.add(startNode);
 
     isFound = false;
 
     while (true) {
-        curNode = _openTable.shift();
+        curNode = _openTable.remove();
         curNode.isInopenTable = false;
         curNode.isInCloseTable = true;
         // _closeTable.push(curNode);
@@ -257,12 +235,10 @@ function search(startRow, startCol, endRow, endCol) {
 
         dealNeighbors(curNode, endNode);
 
-        if (_openTable.length == 0) {
+        if (_openTable.length() == 0) {
             isFound = false;
             break;
         }
-
-        moveMinValueTOFirst();
     }
 
     if (isFound) {

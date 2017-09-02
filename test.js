@@ -7,7 +7,7 @@ const start = 2;
 const end = 3;
 const line = 4;
 
-const isPrintPathMap = true;
+const isPrintPathMap = false;
 
 //测试数据
 let startPos = {
@@ -16,13 +16,13 @@ let startPos = {
 }
 
 let endPos = {
-    row: 25,
-    col: 25
+    row: 9,
+    col: 999
 }
 
 let mapSize = {
-    size: 30,
-    prob: 20
+    size: 1000,
+    prob: 12
 }
 
 

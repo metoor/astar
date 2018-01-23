@@ -2,7 +2,7 @@
  * @des: A* 寻路算法
  * @autho: create by Metoor
  */
-
+"use strict"
 const BlockType = {
     ROAD: 0,
     WALL: 1,
@@ -223,7 +223,7 @@ function search(startRow, startCol, endRow, endCol) {
     isFound = false;
 
     while (true) {
-        curNode = _openTable.remove();
+        let curNode = _openTable.remove();
         curNode.isInopenTable = false;
         curNode.isInCloseTable = true;
         // _closeTable.push(curNode);

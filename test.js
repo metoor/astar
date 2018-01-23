@@ -1,3 +1,5 @@
+"use strict"
+
 const map = require("./map");
 const astar = require("./astar");
 
@@ -7,7 +9,7 @@ const start = 2;
 const end = 3;
 const line = 4;
 
-const isPrintPathMap = false;
+const isPrintPathMap = true;
 
 //测试数据
 let startPos = {
@@ -17,11 +19,11 @@ let startPos = {
 
 let endPos = {
     row: 9,
-    col: 999
+    col: 19
 }
 
 let mapSize = {
-    size: 1000,
+    size: 20,
     prob: 12
 }
 
@@ -85,7 +87,7 @@ function disPlayMap(map) {
 function generateMap(path) {
     if(!isPrintPathMap){
         if(path.length > 2){
-            console.log("[info:]=>path is:", path);
+            //console.log("[info:]=>path is:", path);
         }
         return;
     }

@@ -2,6 +2,8 @@
  * create by Metoor
  * des：最小二叉堆
  */
+"use strict"
+
 function BinaryHeap() {
     this._binaryHeap = [];
 }
@@ -99,7 +101,7 @@ BinaryHeap.prototype.getLeftChildIndex = function (idx) {
     let index = -1;
 
     if (idx >= 0) {
-        leftChild = 2 * idx + 1;
+        let leftChild = 2 * idx + 1;
         if (leftChild <= this._binaryHeap.length - 1) {
             index = leftChild;
         }
